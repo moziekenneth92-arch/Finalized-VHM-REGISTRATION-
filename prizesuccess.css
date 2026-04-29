@@ -1,0 +1,15 @@
+body{
+  background:#050f1e;
+  color:white;
+  font-family:sans-serif;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  height:100vh;
+}
+
+.card{
+  background:#111;
+  padding:30px;
+  border-radius:10px;
+}

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Registration Successful - VHM Scholarship</title>
+<link rel="shortcut icon" href="VHM.png" type="image/x-icon">
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+
+<!-- External Stylesheet -->
+<link rel="stylesheet" href="exam.css">
+<link rel="shortcut icon" href="VHM.png" type="image/x-icon">
+<!-- html2pdf Library -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+</head>
+<body>
+
+<div class="orb orb-1"></div>
+<div class="orb orb-2"></div>
+<div class="orb orb-3"></div>
+
+<div class="wrapper">
+
+  <!-- HEADER -->
+  <header>
+    <a href="index.html" class="btn-back">← Back to Home</a>
+    <div class="logo-bar">
+      <div class="logo-icon"><img src="VHM.png" width="100%" alt=""></div>
+      <div class="logo-text">
+        <h2>Victory Holyghost Mission</h2>
+        <span>Scholarship Scheme</span>
+      </div>
+    </div>
+    <div class="badge">Season 8 · April 2026</div>
+  </header>
+
+  <!-- SUCCESS CARD -->
+  <div class="form-card success-card">
+    
+    <!-- Checkmark Animation -->
+    <div class="success-checkmark">
+      <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="50" cy="50" r="45" fill="none" stroke="#51cf66" stroke-width="2"/>
+        <path d="M 30 50 L 45 65 L 70 35" stroke="#51cf66" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+
+    <!-- Success Message -->
+    <h1 class="success-title">Registration Successful!</h1>
+    <p class="success-subtitle">Your registration has been received and processed successfully.</p>
+
+    <!-- Candidate Details -->
+    <div class="success-details">
+      <div class="detail-box">
+        <label>Candidate Name</label>
+        <p id="candidateName" class="detail-value"></p>
+      </div>
+
+      <div class="detail-box">
+        <label>Email Address</label>
+        <p id="candidateEmail" class="detail-value"></p>
+      </div>
+    </div>
+
+    <!-- Confirmation Message -->
+    <div class="confirmation-message">
+      <p>A confirmation email has been sent to your registered email address. Please check your inbox and spam folder.</p>
+    </div>
+
+    <!-- Action Buttons -->
+    <div class="success-actions">
+      <button id="savePdfBtn" class="btn-save-pdf">📥 Save as PDF</button>
+      <a href="examRegistration.html" class="btn-register-again">Register Another Candidate</a>
+      <a href="index.html" class="btn-home">Back to Home</a>
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <p><strong>Victory Holyghost Mission Scholarship Scheme</strong></p>
+    <p>15/17 Abimbola Street, Isolo, Lagos, Nigeria &nbsp;·&nbsp; (+234) 08161888886, 08186516869</p>
+    <p style="margin-top:6px;"><a href="mailto:vhmscholar@gmail.com" style="color:var(--sky);text-decoration:none;">vhmscholar@gmail.com</a></p>
+    <p style="margin-top:14px;opacity:0.5;">Impacting Lives · Driving Excellence</p>
+  </footer>
+
+</div>
+
+<!-- External JS -->
+<script src="success.js"></script>
+</body>
+</html>

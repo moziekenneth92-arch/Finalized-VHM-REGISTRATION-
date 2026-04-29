@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>VHM Scholarship Exam – Season 8 Registration</title>
+
+<!-- EmailJS SDK -->
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+
+<!-- External Stylesheet -->
+<link rel="shortcut icon" href="VHM.png" type="image/x-icon">
+<link rel="stylesheet" href="exam.css">
+
+</head>
+<body>
+
+<div class="orb orb-1"></div>
+<div class="orb orb-2"></div>
+<div class="orb orb-3"></div>
+
+<div class="wrapper">
+
+  <!-- HEADER -->
+  <header>
+    <a href="index.html" class="btn-back">← Back to Home</a>
+    <div class="logo-bar">
+      <div class="logo-icon"><img src="VHM.png" width="100%" alt=""></div>
+      <div class="logo-text">
+        <h2>Victory Holyghost Mission</h2>
+        <span>Scholarship Scheme</span>
+      </div>
+    </div>
+    <div class="badge">Season 8 · April 2026</div>
+    <h1>Candidate Registration</h1>
+    <p>Complete all fields carefully. Only appropriately filled forms will be accepted.</p>
+  </header>
+
+  <!-- FORM CARD -->
+  <div class="form-card">
+
+
+    <form id="regForm" novalidate>
+
+      <!-- ── DATE ── -->
+      <div class="section-title">Registration Date</div>
+      <div class="field">
+        <label for="reg_date">Date</label>
+        <input type="date" id="reg_date" name="reg_date" required />
+      </div>
+
+      <!-- ── PERSONAL INFO ── -->
+      <div class="section-title">Personal Information</div>
+
+      <div class="grid-3">
+        <div class="field">
+          <label for="first_name">First Name *</label>
+          <input type="text" id="first_name" name="first_name" placeholder="John" required />
+        </div>
+        <div class="field">
+          <label for="middle_name">Middle Name</label>
+          <input type="text" id="middle_name" name="middle_name" placeholder="Emeka" />
+        </div>
+        <div class="field">
+          <label for="last_name">Last Name *</label>
+          <input type="text" id="last_name" name="last_name" placeholder="Okafor" required />
+        </div>
+      </div>
+
+      <div class="grid-2" style="margin-top:18px;">
+        <div class="field">
+          <label>Gender *</label>
+          <div class="radio-group">
+            <label class="radio-opt">
+              <input type="radio" name="gender" value="Male" required />
+              <span class="radio-box"></span> Male
+            </label>
+            <label class="radio-opt">
+              <input type="radio" name="gender" value="Female" />
+              <span class="radio-box"></span> Female
+            </label>
+          </div>
+        </div>
+        <div class="field">
+          <label for="dob">Date of Birth *</label>
+          <input type="date" id="dob" name="dob" required />
+        </div>
+      </div>
+
+      <!-- ── LOCATION ── -->
+      <div class="section-title">Location</div>
+
+      <div class="grid-3">
+        <div class="field">
+          <label for="country">Country *</label>
+          <input type="text" id="country" name="country" placeholder="Nigeria" required />
+        </div>
+        <div class="field">
+          <label for="state">State *</label>
+          <input type="text" id="state" name="state" placeholder="Lagos" required />
+        </div>
+        <div class="field">
+          <label for="lga">Local Govt. *</label>
+          <input type="text" id="lga" name="lga" placeholder="Isolo" required />
+        </div>
+      </div>
+
+      <div class="field full" style="margin-top:18px;">
+        <label for="address">Residential Address *</label>
+        <textarea id="address" name="address" placeholder="Full home address…" required></textarea>
+      </div>
+
+      <!-- ── PARENT / GUARDIAN ── -->
+      <div class="section-title">Parent / Guardian Details</div>
+
+      <div class="field">
+        <label for="parent_name">Parent/Guardian Full Name *</label>
+        <input type="text" id="parent_name" name="parent_name" placeholder="Mr. & Mrs. Okafor" required />
+      </div>
+
+      <div class="grid-2">
+        <div class="field">
+          <label for="parent_phone">Phone Number *</label>
+          <input type="tel" id="parent_phone" name="parent_phone" placeholder="+234 801 234 5678" required />
+        </div>
+        <div class="field">
+          <label for="alt_phone">Alternate Phone</label>
+          <input type="tel" id="alt_phone" name="alt_phone" placeholder="+234 802 345 6789" />
+        </div>
+      </div>
+
+      <div class="field" style="margin-top:18px;">
+        <label for="parent_email">Parent/Guardian Email *</label>
+        <input type="email" id="parent_email" name="parent_email" placeholder="parent@gmail.com" required />
+      </div>
+
+      <!-- ── CHURCH / FELLOWSHIP ── -->
+      <div class="section-title">Fellowship Details</div>
+
+      <div class="field">
+        <label for="hcf">House Care Fellowship (HCF) Centre *</label>
+        <input type="text" id="hcf" name="hcf" placeholder="HCF Centre name" required />
+      </div>
+
+      <!-- ── SCHOOL ── -->
+      <div class="section-title">School Information</div>
+
+      <div class="grid-2">
+        <div class="field">
+          <label for="current_class">Current Class *</label>
+          <input type="text" id="current_class" name="current_class" placeholder="e.g. Primary 5" required />
+        </div>
+        <div class="field">
+          <label for="school_name">Name of School *</label>
+          <input type="text" id="school_name" name="school_name" placeholder="School name" required />
+        </div>
+      </div>
+
+      <div class="field full" style="margin-top:18px;">
+        <label for="school_address">School Address *</label>
+        <textarea id="school_address" name="school_address" placeholder="Full school address…" required></textarea>
+      </div>
+
+      <div class="grid-2">
+        <div class="field">
+          <label for="class_teacher">Name of Class Teacher *</label>
+          <input type="text" id="class_teacher" name="class_teacher" placeholder="Teacher's name" required />
+        </div>
+        <div class="field">
+          <label for="head_teacher">Name of Head Teacher / Principal *</label>
+          <input type="text" id="head_teacher" name="head_teacher" placeholder="Principal's name" required />
+        </div>
+      </div>
+
+      <!-- ── AGREEMENTS ── -->
+      <div class="section-title">Declarations</div>
+
+      <div class="check-list">
+        <label class="check-item">
+          <input type="checkbox" name="agree_data" id="agree_data" required />
+          <span class="check-box">
+            <svg viewBox="0 0 12 12" fill="none"><polyline points="1.5,6 5,9.5 10.5,2.5"/></svg>
+          </span>
+          I agree to the use of my personal data by <strong>Victory Holyghost Mission Scholarship Scheme</strong> for the purpose of this competition.
+        </label>
+
+        <label class="check-item">
+          <input type="checkbox" name="agree_truth" id="agree_truth" required />
+          <span class="check-box">
+            <svg viewBox="0 0 12 12" fill="none"><polyline points="1.5,6 5,9.5 10.5,2.5"/></svg>
+          </span>
+          I certify all the information I have provided in this form is true and correct to the best of my knowledge.
+        </label>
+
+        <label class="check-item">
+          <input type="checkbox" name="agree_rules" id="agree_rules" required />
+          <span class="check-box">
+            <svg viewBox="0 0 12 12" fill="none"><polyline points="1.5,6 5,9.5 10.5,2.5"/></svg>
+          </span>
+          I submit to the operational system, discipline, and process that is put in place for this competition by the <strong>Victory Holyghost Mission Scholarship Scheme</strong>.
+        </label>
+
+        <label class="check-item">
+          <input type="checkbox" name="agree_photo" id="agree_photo" required />
+          <span class="check-box">
+            <svg viewBox="0 0 12 12" fill="none"><polyline points="1.5,6 5,9.5 10.5,2.5"/></svg>
+          </span>
+          I understand this form is to be submitted with a passport photograph attached.
+        </label>
+      </div>
+
+      <!-- ── SUBMIT ── -->
+      <div class="btn-row">
+        <button type="submit" class="btn-submit" id="submitBtn">
+          <span class="btn-text">Submit Registration</span>
+          <div class="spinner"></div>
+        </button>
+        <p class="note">
+          Submissions sent to <strong>vhmscholar@gmail.com</strong> ·
+          Powered by <a href="http://nobletechacademy.com/" >NobleTech Space</a>
+        </p>
+      </div>
+
+    </form>
+  </div>
+
+  <footer>
+    <p><strong>Victory Holyghost Mission Scholarship Scheme</strong></p>
+    <p>15/17 Abimbola Street, Isolo, Lagos, Nigeria &nbsp;·&nbsp; (+234) 08161888886, 08186516869</p>
+    <p style="margin-top:6px;"><a href="mailto:vhmscholar@gmail.com" style="color:var(--sky);text-decoration:none;">vhmscholar@gmail.com</a></p>
+    <p style="margin-top:14px;opacity:0.5;">Impacting Lives · Driving Excellence</p>
+  </footer>
+
+</div>
+
+<!-- TOAST -->
+<div id="toast">
+  <span class="toast-icon" id="toastIcon"></span>
+  <span id="toastMsg"></span>
+</div>
+
+<!-- External JS -->
+<script src="VHM_form.js"></script>
+</body>
+</html>

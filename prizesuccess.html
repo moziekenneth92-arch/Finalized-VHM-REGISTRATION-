@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Registration Successful – VHM Scholarship</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+<link rel="shortcut icon" href="VHM.png" type="image/x-icon">
+<link rel="shortcut icon" href="VHM.png" type="image/x-icon">
+
+<style>
+/* ── Page shell ─────────────────────────────────────── */
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: #050f1e;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 30px 16px;
+  margin: 0;
+}
+
+.screen-card {
+  background: rgba(255,255,255,.05);
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: 16px;
+  width: 100%;
+  max-width: 540px;
+  padding: 32px 28px;
+  text-align: center;
+}
+
+.screen-card h1 { color: #60a5fa; margin-bottom: 6px; font-size: 22px; }
+.screen-card p  { color: rgba(255,255,255,.6); font-size: 14px; margin-bottom: 24px; }
+
+.btn-download {
+  background: #1a6fff;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 14px 32px;
+  font-size: 15px;
+  font-family: 'DM Sans', sans-serif;
+  cursor: pointer;
+  transition: .2s;
+  width: 100%;
+  max-width: 300px;
+}
+.btn-download:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(26,111,255,.4); }
+
+/* ── PDF template (hidden on screen, printed to PDF) ── */
+#pdfTemplate {
+  display: none;
+}
+
+/* ── PDF inner styles ─────────────────────────────── */
+.pdf-page {
+  font-family: Arial, Helvetica, sans-serif;
+  background: #fff;
+  color: #222;
+  width: 750px;
+  padding: 48px 56px 56px;
+  box-sizing: border-box;
+}
+
+/* Header */
+.pdf-header { text-align: center; border-bottom: 3px solid #1a6fff; padding-bottom: 24px; margin-bottom: 28px; }
+.pdf-logo { width: 72px; height: 72px; border-radius: 50%; object-fit: cover; margin-bottom: 10px; }
+.pdf-org-name { font-size: 11px; color: #555; letter-spacing: 1px; margin: 0 0 6px; }
+.pdf-title { font-size: 26px; font-weight: 900; letter-spacing: 3px; color: #050f1e; margin: 0 0 6px; }
+.pdf-subtitle { font-size: 13px; color: #555; margin: 0; }
+.pdf-season { color: #1a6fff; font-weight: 700; }
+
+/* Status banner */
+.pdf-status {
+  text-align: center;
+  margin: 20px 0 28px;
+  font-size: 14px;
+  color: #1a6fff;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+.pdf-status::before { content: "✓  "; }
+
+/* Section label */
+.pdf-section-label {
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: #888;
+  font-weight: 700;
+  margin: 24px 0 8px;
+  text-transform: uppercase;
+}
+
+/* Table rows */
+.pdf-table { width: 100%; border-collapse: collapse; margin-bottom: 6px; }
+.pdf-table tr { border-bottom: 1px solid #e8ecf2; }
+.pdf-table td {
+  padding: 11px 14px;
+  font-size: 13px;
+  vertical-align: top;
+}
+.pdf-table td:first-child {
+  color: #1a6fff;
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: .5px;
+  text-transform: uppercase;
+  width: 200px;
+}
+.pdf-table td:last-child { color: #222; }
+
+/* Note box */
+.pdf-note {
+  background: #f0f6ff;
+  border-left: 3px solid #1a6fff;
+  border-radius: 4px;
+  padding: 12px 16px;
+  font-size: 12px;
+  color: #333;
+  margin: 28px 0 0;
+  line-height: 1.6;
+}
+.pdf-note strong { color: #050f1e; }
+
+/* Footer */
+.pdf-footer {
+  text-align: center;
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 1px solid #dde4ef;
+}
+.pdf-footer-name { font-size: 13px; font-weight: 700; color: #050f1e; margin: 0 0 4px; }
+.pdf-footer-detail { font-size: 11px; color: #777; margin: 2px 0; }
+.pdf-footer-tagline { font-size: 10px; color: #aaa; margin-top: 8px; letter-spacing: 1px; }
+</style>
+</head>
+<body>
+
+<!-- ── Visible success card ─────────────────────────── -->
+<div class="screen-card">
+  <h1>✅ Registration Successful</h1>
+  <p>Your form has been submitted. Download your confirmation below.</p>
+
+  <div style="text-align:left; font-size:14px; color:rgba(255,255,255,.8); margin-bottom:24px; line-height:1.9;">
+    <p><strong>Name:</strong> <span id="dispName"></span></p>
+    <p><strong>Class:</strong> <span id="dispClass"></span></p>
+    <p><strong>School:</strong> <span id="dispSchool"></span></p>
+    <p><strong>Parent:</strong> <span id="dispParent"></span></p>
+    <p><strong>Date:</strong> <span id="dispDate"></span></p>
+  </div>
+
+  <button class="btn-download" onclick="downloadPDF()">⬇ Download PDF Confirmation</button>
+</div>
+
+<!-- ── Hidden PDF template ──────────────────────────── -->
+<div id="pdfTemplate">
+  <div class="pdf-page" id="pdfContent">
+
+    <div class="pdf-header">
+      <img class="pdf-logo" src="VHM.png" alt="VHM Logo"
+           onerror="this.style.display='none'">
+      <p class="pdf-org-name">Victory Holyghost Mission Scholarship Scheme</p>
+      <h1 class="pdf-title">REGISTRATION CONFIRMATION</h1>
+      <p class="pdf-subtitle">
+        Victory Holyghost Mission Scholarship Scheme<br>
+        <span class="pdf-season">Season 8 · April 2026</span>
+      </p>
+    </div>
+
+    <div class="pdf-status">Registration Successful</div>
+
+    <!-- Candidate Summary -->
+    <div class="pdf-section-label">Candidate Summary</div>
+    <table class="pdf-table">
+      <tr>
+        <td>Full Name</td>
+        <td id="pdf-name"></td>
+      </tr>
+      <tr>
+        <td>Current Class</td>
+        <td id="pdf-class"></td>
+      </tr>
+      <tr>
+        <td>Registration Date</td>
+        <td id="pdf-date"></td>
+      </tr>
+    </table>
+
+    <!-- School Information -->
+    <div class="pdf-section-label">School Information</div>
+    <table class="pdf-table">
+      <tr>
+        <td>School Name</td>
+        <td id="pdf-school"></td>
+      </tr>
+      <tr>
+        <td>School Address</td>
+        <td id="pdf-school-address"></td>
+      </tr>
+      <tr>
+        <td>School Phone</td>
+        <td id="pdf-school-phone"></td>
+      </tr>
+      <tr>
+        <td>Class Teacher</td>
+        <td id="pdf-teacher"></td>
+      </tr>
+      <tr>
+        <td>Principal</td>
+        <td id="pdf-principal"></td>
+      </tr>
+    </table>
+
+    <!-- Fees -->
+    <div class="pdf-section-label">Fees</div>
+    <table class="pdf-table">
+      <tr>
+        <td>Tuition Amount</td>
+        <td id="pdf-tuition"></td>
+      </tr>
+      <tr>
+        <td>Bank Details</td>
+        <td id="pdf-bank"></td>
+      </tr>
+    </table>
+
+    <!-- Signatures -->
+    <div class="pdf-section-label">Signatures</div>
+    <table class="pdf-table">
+      <tr>
+        <td>Principal Name</td>
+        <td id="pdf-principal-name"></td>
+      </tr>
+      <tr>
+        <td>HCF Leader</td>
+        <td id="pdf-hcf"></td>
+      </tr>
+      <tr>
+        <td>Parent Name</td>
+        <td id="pdf-parent"></td>
+      </tr>
+    </table>
+
+    <div class="pdf-note">
+      <strong>Note:</strong> A confirmation email has been sent to your registered email address.
+      Please check your inbox and spam folder for further instructions.
+    </div>
+
+    <div class="pdf-footer">
+      <p class="pdf-footer-name">Victory Holyghost Mission Scholarship Scheme</p>
+      <p class="pdf-footer-detail">15/17 Abimbola Street, Isolo, Lagos, Nigeria</p>
+      <p class="pdf-footer-detail">Phone: (+234) 08161888886, 08186516869</p>
+      <p class="pdf-footer-detail">Email: vhmscholar@gmail.com</p>
+      <p class="pdf-footer-tagline">Impacting Lives · Driving Excellence</p>
+    </div>
+
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+<script>
+// ── Load saved data ──────────────────────────────────
+const raw = localStorage.getItem("candidateData");
+const d   = raw ? JSON.parse(raw) : {};
+
+const fullName = [d.firstName, d.middleName, d.lastName].filter(Boolean).join(" ") || "—";
+
+// Screen card
+document.getElementById("dispName").textContent   = fullName;
+document.getElementById("dispClass").textContent  = d.currentClass  || "—";
+document.getElementById("dispSchool").textContent = d.schoolName    || "—";
+document.getElementById("dispParent").textContent = d.parentName    || "—";
+document.getElementById("dispDate").textContent   = d.timestamp     || "—";
+
+// PDF template — all fields
+document.getElementById("pdf-name").textContent           = fullName;
+document.getElementById("pdf-class").textContent          = d.currentClass   || "—";
+document.getElementById("pdf-date").textContent           = d.timestamp      || new Date().toLocaleDateString("en-GB", {day:"numeric",month:"long",year:"numeric"});
+document.getElementById("pdf-school").textContent         = d.schoolName     || "—";
+document.getElementById("pdf-school-address").textContent = d.schoolAddress  || "—";
+document.getElementById("pdf-school-phone").textContent   = d.schoolPhone    || "—";
+document.getElementById("pdf-teacher").textContent        = d.classTeacher   || "—";
+document.getElementById("pdf-principal").textContent      = d.principal      || "—";
+document.getElementById("pdf-tuition").textContent        = d.tuitionAmount  || "—";
+document.getElementById("pdf-bank").textContent           = d.bankDetails    || "—";
+document.getElementById("pdf-principal-name").textContent = d.principalName  || "—";
+document.getElementById("pdf-hcf").textContent            = d.hcfLeader      || "—";
+document.getElementById("pdf-parent").textContent         = d.parentName     || "—";
+
+// ── Download PDF ─────────────────────────────────────
+function downloadPDF() {
+  const element = document.getElementById("pdfContent");
+
+  // Briefly show it so html2pdf can render it
+  element.parentElement.style.display = "block";
+
+  const opt = {
+    margin:      [8, 8, 8, 8],
+    filename:    "VHM_Registration_Confirmation.pdf",
+    image:       { type: "jpeg", quality: 0.98 },
+    html2canvas: { scale: 2, useCORS: true, backgroundColor: "#ffffff" },
+    jsPDF:       { unit: "mm", format: "a4", orientation: "portrait" }
+  };
+
+  html2pdf()
+    .set(opt)
+    .from(element)
+    .save()
+    .then(() => {
+      element.parentElement.style.display = "none";
+    });
+}
+</script>
+</body>
+</html>

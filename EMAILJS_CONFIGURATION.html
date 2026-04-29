@@ -1,0 +1,110 @@
+<!-- 
+  ====================================================================
+  VHM SCHOLARSHIP REGISTRATION - EMAIL CONFIGURATION REFERENCE
+  ====================================================================
+  
+  EMAILJS SETUP CHECKLIST:
+  
+  ✓ Step 1: Sign up at https://www.emailjs.com/ (FREE)
+  
+  ✓ Step 2: Create Email Service
+     - Connect your email (Gmail, Outlook, etc.)
+     - Get Service ID: service_xxxxxxxxxx
+  
+  ✓ Step 3: Create Email Template
+     - Template Name: vhm_registration_confirmation
+     - Get Template ID: template_xxxxxxxxxx
+  
+  ✓ Step 4: Get Public Key
+     - Account → API Keys
+     - Get Public Key: pk_live_xxxxxx or similar
+  
+  ✓ Step 5: UPDATE THESE VALUES IN VHM_form.js:
+  
+     Line 6:
+     emailjs.init('YOUR_EMAILJS_PUBLIC_KEY');
+     
+     Change to:
+     emailjs.init('pk_live_xxxxxxxxxxxxxxxxxxxxxxxxxx');
+     
+     
+     Lines 54-56:
+     return emailjs.send(
+       'YOUR_SERVICE_ID',
+       'YOUR_TEMPLATE_ID',
+       templateParams
+     );
+     
+     Change to:
+     return emailjs.send(
+       'service_abc123xyz',
+       'template_abc123xyz',
+       templateParams
+     );
+  
+  
+  EMAIL TEMPLATE VARIABLES USED:
+  - {{to_email}} - Recipient email (admin)
+  - {{candidate_name}} - Student full name
+  - {{candidate_email}} - Parent email
+  - {{first_name}}, {{middle_name}}, {{last_name}}
+  - {{gender}}, {{dob}}
+  - {{country}}, {{state}}, {{lga}}, {{address}}
+  - {{parent_name}}, {{parent_phone}}, {{alt_phone}}, {{parent_email}}
+  - {{hcf}} - Fellowship details
+  - {{current_class}}, {{school_name}}, {{school_address}}
+  - {{class_teacher}}, {{head_teacher}}
+  - {{reg_date}}, {{submission_time}}
+  
+  
+  CURRENT FORM FLOW:
+  1. User fills registration form
+  2. Form validates all required fields
+  3. All data is captured
+  4. Email is sent to: vhmscholar@gmail.com
+  5. Data is stored in browser localStorage
+  6. User redirected to success.html
+  7. Success page displays confirmation
+  8. User can download PDF certificate
+  
+  
+  WHAT ADMIN RECEIVES:
+  - Email with all registration details
+  - Formatted table with candidate information
+  - Submission timestamp
+  
+  WHAT CANDIDATE SEES:
+  - Success page with checkmark
+  - Their name and email displayed
+  - Option to save PDF
+  - Confirmation message about email
+  
+  
+  TROUBLESHOOTING:
+  
+  Issue: "emailjs is not defined"
+  → EmailJS SDK not loaded in HTML <head>
+  → Check: <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  
+  Issue: "Missing public key"
+  → 'YOUR_EMAILJS_PUBLIC_KEY' not replaced with actual key
+  → Get from: EmailJS Dashboard → Account → API Keys
+  
+  Issue: "Unknown service"
+  → Service ID not found in your EmailJS account
+  → Check Service ID is correct and service is active
+  
+  Issue: "Unknown template"
+  → Template ID not found in your EmailJS account
+  → Check Template ID is correct and template is published
+  
+  Issue: Email not received
+  → Check EmailJS activity/logs on dashboard
+  → Verify email service authorization is complete
+  → Check spam/promotions folder
+  
+  
+  For complete setup guide: See EMAILJS_SETUP_GUIDE.md
+  EmailJS Documentation: https://www.emailjs.com/docs/
+  ====================================================================
+-->

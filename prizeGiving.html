@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>VHM Scholarship – Candidate Prize Claim Form </title>
+<link rel="shortcut icon" href="VHM.png" type="image/x-icon">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+
+<style>
+:root {
+  --navy:#050f1e;
+  --blue:#1a6fff;
+  --sky:#60a5fa;
+  --white:#f0f4ff;
+  --border:rgba(255,255,255,.09);
+}
+
+*{box-sizing:border-box;margin:0;padding:0;}
+
+body{
+  font-family:'DM Sans',sans-serif;
+  background:var(--navy);
+  color:var(--white);
+}
+
+.wrapper{max-width:820px;margin:auto;padding:32px 20px;animation:fadeIn .8s ease;}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+
+.form-card{
+  background:rgba(255,255,255,.04);
+  border:1px solid var(--border);
+  border-radius:20px;
+  padding:40px;
+  animation:slideUp .9s ease;
+}
+@keyframes slideUp{
+  from{opacity:0; transform:translateY(40px);}
+  to{opacity:1; transform:translateY(0);}
+}
+
+header{text-align:center;margin-bottom:30px;}
+
+.logo-bar{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  margin:10px 0;
+}
+
+.logo-icon{
+  width:50px;
+  height:50px;
+  border-radius:50%;
+  overflow:hidden;
+  border:2px solid var(--blue);
+}
+.logo-icon img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+h1{
+  font-family:'Playfair Display',serif;
+  font-size:36px;
+  background:linear-gradient(135deg,#fff,var(--sky));
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+
+.btn-back{
+  display:inline-block;
+  margin-bottom:15px;
+  padding:8px 14px;
+  font-size:13px;
+  border-radius:8px;
+  background:rgba(255,255,255,0.08);
+  border:1px solid var(--border);
+  color:var(--white);
+  cursor:pointer;
+}
+
+.section-title{
+  font-size:11px;
+  letter-spacing:2px;
+  color:var(--sky);
+  margin:30px 0 15px;
+}
+
+.field{display:flex;flex-direction:column;gap:6px;margin-bottom:14px;}
+label{font-size:12px;color:rgba(255,255,255,.7);}
+
+input,textarea{
+  padding:12px;
+  border-radius:10px;
+  border:1px solid var(--border);
+  background:rgb(255, 255, 255);
+  color:rgb(0, 0, 0);
+  outline:none;
+}
+
+textarea{min-height:90px;}
+
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
+.grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;}
+
+@media(max-width:700px){
+  .grid-3,.grid-2{grid-template-columns:1fr;}
+}
+
+.btn-submit{
+  background:var(--blue);
+  color:white;
+  padding:14px 40px;
+  border:none;
+  border-radius:10px;
+  cursor:pointer;
+  margin-top:20px;
+  transition:.2s;
+  font-size:15px;
+}
+.btn-submit:hover{
+  transform:translateY(-2px);
+  box-shadow:0 8px 25px rgba(26,111,255,0.4);
+}
+.btn-submit:disabled{
+  opacity:0.6;
+  cursor:not-allowed;
+  transform:none;
+}
+</style>
+</head>
+
+<body>
+
+<div class="wrapper">
+
+<header>
+  <button onclick="goBack()" class="btn-back">← Back</button>
+
+  <div class="logo-bar">
+    <div class="logo-icon">
+      <img src="VHM.png" alt="VHM Logo">
+    </div>
+    <div>
+      <h2>Victory Holyghost Mission</h2>
+      <small>Scholarship Prize Claim Form</small>
+    </div>
+  </div>
+
+  <h1>Candidate Registration</h1>
+  <br>
+  <p>Dearly beloved,
+Thank you for taking part in the VHM scholarship scheme examination APRIL, 2026. </p>
+</header>
+
+<div class="form-card">
+
+<form id="registrationForm">
+  <!-- Web3Forms hidden fields -->
+  <input type="hidden" name="access_key" value="e520ef25-1ade-4cf1-8138-c63df3a50548">
+  <input type="hidden" name="subject" value="VHM Scholarship – New Candidate Registration">
+  <input type="hidden" name="from_name" value="VHM Scholarship Portal">
+
+<div class="section-title">Student Information</div>
+
+<div class="grid-3">
+  <div class="field">
+    <label>First Name *</label>
+    <input type="text" name="First Name" required>
+  </div>
+  <div class="field">
+    <label>Middle Name *</label>
+    <input type="text" name="Middle Name" required>
+  </div>
+  <div class="field">
+    <label>Surname *</label>
+    <input type="text" name="Surname" required>
+  </div>
+</div>
+
+<div class="field">
+  <label>Current Session Class *</label>
+  <input type="text" name="Current Class" required>
+</div>
+
+<div class="section-title">School Information</div>
+
+<div class="field">
+  <label>Name of School *</label>
+  <input type="text" name="School Name" required>
+</div>
+
+<div class="field">
+  <label>School Address *</label>
+  <textarea name="School Address" required></textarea>
+</div>
+
+<div class="field">
+  <label>School Phone Contact *</label>
+  <input type="tel" name="School Phone" required>
+</div>
+
+<div class="grid-2">
+  <div class="field">
+    <label>Class Teacher *</label>
+    <input type="text" name="Class Teacher" required>
+  </div>
+  <div class="field">
+    <label>Principal *</label>
+    <input type="text" name="Principal" required>
+  </div>
+</div>
+
+<div class="section-title">Fees</div>
+
+<div class="field">
+  <label>Tuition Amount *</label>
+  <input type="text" name="Tuition Amount" required>
+</div>
+
+<div class="field">
+  <label>Bank Details *</label>
+  <textarea name="Bank Details" required></textarea>
+</div>
+
+<div class="section-title">Signatures</div>
+
+<div class="field">
+  <label>Principal Name *</label>
+  <input type="text" name="Principal Name" required>
+</div>
+
+<div class="field">
+  <label>HCF Leader Name *</label>
+  <input type="text" name="HCF Leader" required>
+</div>
+
+<div class="field">
+  <input type="checkbox" name="confirming" required style="width:20px; height:20px; margin-right:10px;">I agree to the use of my personal data byVictory Holyghost Mission Scholarship
+Scheme for the purpose of this competition. 
+
+</div>
+
+<div class="field">
+  <input type="checkbox" name="confirming" required style="width:20px; height:20px; margin-right:10px;"> I agree to the use of my personal data byVictory Holyghost Mission Scholarship
+Scheme for the purpose of this competition. 
+
+</div>
+
+<div class="field">
+  <input type="checkbox" name="confirming" required style="width:20px; height:20px; margin-right:10px;"> I submit myself to the operational system, discipline, and process that is put in place
+for this competition by the Victory Holyghost Mission Scholarship Scheme, and agree
+that the scholarship is to cover TUITION FEE ONLY. 
+</div>
+
+<button class="btn-submit" type="submit" id="submitBtn">Submit</button>
+
+</form>
+
+</div>
+</div>
+
+<script src="prize.js"></script>
+</body>
+</html>
