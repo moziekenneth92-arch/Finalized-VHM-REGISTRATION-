@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", function () {
       access_key: "e520ef25-1ade-4cf1-8138-c63df3a50548",
       subject:    "VHM Scholarship – New Prize Claim Registration",
       from_name:  "VHM Scholarship Portal",
-      email:      data["Parent Email"] || "noreply@vhmscholarship.org",
+      email:      data["Parent Email"] || "info@vhmscholarship.org",
 
       message: `
 NEW PRIZE CLAIM REGISTRATION
